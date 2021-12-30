@@ -1,4 +1,4 @@
-1. git clone 
+1. git clone https://github.com/jotaseme/test2021.git
 2. cd test2021
 3. composer install
 4. bin/console doctrine:migration:migrate
