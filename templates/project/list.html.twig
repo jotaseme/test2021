@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Project List{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Projects</h1>
+
+    {{ form_start(filter, {'method': 'GET'}) }}
+    {{ form_widget(filter) }}
+    {{ form_rest(filter) }}
+    <input type="submit" value="Search" class="btn btn-primary btn" />
+    {{ form_end(filter) }}
+    <hr>
+    <a href="{{ path('new_project') }}">Create new project</a>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr class="project">
+                <th scope="row">{{ project.id  }}</th>
+                <td>{{ project.name }}</td>
+                <td>{{ project.amount.value }} {{ project.amount.currency }}</td>
+                <td>{{ project.startDate|date("d/m/Y H:i:s")  }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(projects) }}
+    </div>
+</div>
+{% endblock %}
