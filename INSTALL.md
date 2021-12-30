@@ -12,3 +12,4 @@ Adicionalmente, para ejecutar correctamente los tests:
 1. bin/console --env=test doctrine:database:create
 2. bin/console --env=test doctrine:schema:create
 3. bin/console doctrine:fixtures:load --env=test
+4. ./bin/phpunit
